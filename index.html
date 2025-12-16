@@ -504,7 +504,7 @@
         lease_start_date: '',
         notice_days: '30',
         monthly_rent: '',
-        late_fee_day: '5th',
+        late_fee_day: '15th',
         late_fee_amount: '$50.00',
         nsf_fee: '$35.00',
         security_deposit: '',
@@ -518,7 +518,7 @@
         // Property Rules
         abandonment_days: '15',
         insurance_days: '14',
-        min_temperature: '55',
+        min_temperature: '62',
         grill_distance: '10',
         snow_removal_tenant: 'Tenants are responsible for clearing snow from their entryway, walkways, and parking area.',
         snow_removal_landlord: 'Landlord will handle snow removal for common areas and driveways.',
@@ -605,18 +605,18 @@
     function applyDefaults() {
       state.formData = {
         ...state.formData,
-        landlord_company: 'Home Sweet Maine LLC',
-        company_name: 'Home Sweet Maine',
-        payment_attention: 'Property Management',
-        company_street: '123 Main Street',
-        company_city_state_zip: 'Portland, ME 04101',
+        landlord_company: 'Ziad Sowamrah',
+        company_name: 'Ziad Sowamrah',
+        payment_attention: 'Ziad Sowamrah',
+        company_street: '20 Hemlock Rd',
+        company_city_state_zip: 'Windham, ME 04062',
         notice_days: '30',
-        late_fee_day: '5th',
+        late_fee_day: '15th',
         late_fee_amount: '$50.00',
         nsf_fee: '$35.00',
         abandonment_days: '15',
         insurance_days: '14',
-        min_temperature: '55',
+        min_temperature: '62',
         grill_distance: '10',
         max_occupants: '4',
         parking_description: 'One parking spot per unit is provided.',
@@ -741,11 +741,8 @@
               </div>
               <div class="form-group">
                 <label>Notice Days to Terminate</label>
-                <select onchange="updateFormData('notice_days', this.value)">
-                  <option value="30" ${state.formData.notice_days === '30' ? 'selected' : ''}>30 days</option>
-                  <option value="60" ${state.formData.notice_days === '60' ? 'selected' : ''}>60 days</option>
-                  <option value="90" ${state.formData.notice_days === '90' ? 'selected' : ''}>90 days</option>
-                </select>
+                <input type="text" value="30" disabled style="background: #f7fafc; color: #718096;">
+                <small>Required by Maine law for at-will tenancies</small>
               </div>
               <div class="form-group">
                 <label>Monthly Rent</label>
@@ -755,20 +752,18 @@
               </div>
               <div class="form-group">
                 <label>Late Fee Kicks In</label>
-                <select onchange="updateFormData('late_fee_day', this.value)">
-                  <option value="5th" ${state.formData.late_fee_day === '5th' ? 'selected' : ''}>5th of the month</option>
-                  <option value="7th" ${state.formData.late_fee_day === '7th' ? 'selected' : ''}>7th of the month</option>
-                  <option value="10th" ${state.formData.late_fee_day === '10th' ? 'selected' : ''}>10th of the month</option>
-                </select>
+                <input type="text" value="15th" disabled style="background: #f7fafc; color: #718096;">
+                <small>Maine law: cannot charge late fee before 15th</small>
               </div>
               <div class="form-group">
                 <label>Late Fee Amount</label>
                 <input type="text" value="${state.formData.late_fee_amount}" 
                        onchange="updateFormData('late_fee_amount', this.value)"
                        placeholder="e.g., $50.00">
+                <small>Maine law: max 4% of monthly rent</small>
               </div>
               <div class="form-group">
-                <label>NSF Fee</label>
+                <label>NSF Fee (Non-Sufficient Funds)</label>
                 <input type="text" value="${state.formData.nsf_fee}" 
                        onchange="updateFormData('nsf_fee', this.value)"
                        placeholder="e.g., $35.00">
@@ -832,7 +827,8 @@
                 <label>Minimum Temperature (°F)</label>
                 <input type="number" value="${state.formData.min_temperature}" 
                        onchange="updateFormData('min_temperature', this.value)"
-                       placeholder="e.g., 55">
+                       placeholder="e.g., 62">
+                <small>Maine law: minimum 62°F required</small>
               </div>
               <div class="form-group">
                 <label>Grill Distance from Building (ft)</label>
@@ -1323,7 +1319,6 @@
               </div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" onclick="closeModal()">Close</button>
-                <button class="btn btn-primary" onclick="downloadLease()">📥 Download HTML</button>
                 <button class="btn btn-success" onclick="printLease()">🖨️ Print / Save PDF</button>
               </div>
             </div>
@@ -1336,4 +1331,4 @@
     render();
   </script>
 </body>
-  </html>
+</html>
