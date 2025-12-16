@@ -960,13 +960,22 @@
         <head>
           <title>At-Will Lease Agreement</title>
           <style>
+            @page {
+              margin: 0.75in 1in 1in 1in;
+              @bottom-center {
+                content: "Page " counter(page) " of " counter(pages);
+                font-family: Arial, sans-serif;
+                font-size: 10pt;
+                color: #666;
+              }
+            }
             body {
               font-family: Arial, sans-serif;
               font-size: 11pt;
               line-height: 1.5;
               color: #000;
               margin: 0;
-              padding: 0.75in 1in;
+              padding: 0;
             }
             h1 {
               text-align: center;
@@ -1005,9 +1014,6 @@
             }
             .signature-line {
               margin: 10px 0;
-            }
-            @media print {
-              body { margin: 0; padding: 0.5in 0.75in; }
             }
           </style>
         </head>
